@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import fastfood from "./fastfood.json"
 
 const App: React.FC<{}> = () => {
   const [weight, setWeight] = useState<string>('');
   const [kjConsumed, setkjConsumed] = useState<string>('');
   const [walkTime, setWalkTime] = useState<string>('');
   const [kjBurnedPerkj, setkjBurnedPerkj] = useState<number>(11.06);
+  const fastFood = fastfood.list;
 
   const handleClick = (event: { preventDefault: () => void; }) => {
     if(kjConsumed.length === 0 || weight.length === 0) {
-      alert('Please fill in all fields.');
       return false
     }
     const weightInt = parseInt(weight)
@@ -31,10 +32,12 @@ const App: React.FC<{}> = () => {
     <h1>Kj Burn Calculator</h1>
     <p>Input your weight, walking speed and how mant kilojoules you consumed to find out how long it would take to burn them off.</p>
       <form>
-      <label><b>Weight: </b></label> 
+        <label><b>Weight</b></label> 
+        <br/>
         <input type="number" name="fweight" className="user_input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
         <br/>
-        <label><b>Walking speed: </b></label> 
+        <label><b>Walking speed</b></label> 
+        <br/>
           <select className="user_input" name="speed" id="speed" value={kjBurnedPerkj}
             onChange={(event) => {setkjBurnedPerkj(event.target.value as unknown as number)}}>
               <option value="11.06" >Slow - 3km/h</option>
@@ -42,16 +45,12 @@ const App: React.FC<{}> = () => {
               <option value="18.44">Brisk - 6km/h</option>
           </select>
         <br/>
-
         <label><b>How many kilojoules did you consume?</b></label>
-          <input id="kj_consumed" list="kilojoules-list" className="user_input" 
+        <br/>
+          <input id="kj_consumed" list="kilojoules-list" required className="user_input" 
           value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}} />
           <datalist id="kilojoules-list">
-              <option  value="2060">Big Mac</option>
-              <option value="1900">Large chips</option>
-              <option value="973">One slice of Hawaiian pizza</option>
-              <option value="2163">Two pieces of fried chicken</option>
-
+            {fastFood.map((element, index) => <option  value={element.value} key={index}>{element.name}</option> )}
           </datalist>
         <br/>
         <button onClick={handleClick}>
