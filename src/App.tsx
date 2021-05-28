@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import fastfood from "./fastfood.json"
+import './styles.scss';
 
 const App: React.FC<{}> = () => {
   const [weight, setWeight] = useState<string>('');
@@ -28,15 +29,15 @@ const App: React.FC<{}> = () => {
   
 
   return (
-    <>
+    <div className="container">
     <h1>Kj Burn Calculator</h1>
     <p>Input your weight, walking speed and how mant kilojoules you consumed to find out how long it would take to burn them off.</p>
       <form>
-        <label><b>Weight</b></label> 
+        <label className="label"><b>Weight</b></label> 
         <br/>
         <input type="number" name="fweight" className="user_input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
         <br/>
-        <label><b>Walking speed</b></label> 
+        <label className="label"><b>Walking speed</b></label> 
         <br/>
           <select className="user_input" name="speed" id="speed" value={kjBurnedPerkj}
             onChange={(event) => {setkjBurnedPerkj(event.target.value as unknown as number)}}>
@@ -45,7 +46,7 @@ const App: React.FC<{}> = () => {
               <option value="18.44">Brisk - 6km/h</option>
           </select>
         <br/>
-        <label><b>How many kilojoules did you consume?</b></label>
+        <label className="label"><b>How many kilojoules did you consume?</b></label>
         <br/>
           <input id="kj_consumed" list="kilojoules-list" required className="user_input" 
           value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}} />
@@ -58,7 +59,7 @@ const App: React.FC<{}> = () => {
         </button>
       </form>
       <p>{walkTime}</p>
-    </>
+    </div>
   );
 }
 

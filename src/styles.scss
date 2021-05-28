@@ -1,0 +1,40 @@
+$font-stack:    Helvetica, sans-serif;
+$box-shadow: rgb(132, 186, 236);
+$mobile-margin-bottom: 0.5em;
+
+body {
+    font-family: $font-stack
+}
+
+.container{
+    width:100%
+}
+
+form{
+    width:92w;
+    padding: 1em;
+    border: solid 1px rgb(204, 202, 202);
+    border-radius: 10px;
+}
+
+.label {
+    margin-bottom: $mobile-margin-bottom;
+    display:inline-block;
+}
+
+.user_input{
+    margin-bottom: $mobile-margin-bottom;
+    width: 86vw;
+}
+
+input:focus {
+    -webkit-box-shadow: 0 0 10px $box-shadow;
+        box-shadow: 0 0 10px $box-shadow;
+}
+
+button{
+    width: 86vw;
+   background-color:rgb(132, 186, 236);
+   border:0
+
+}

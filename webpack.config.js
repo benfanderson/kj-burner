@@ -22,8 +22,8 @@ module.exports = {
         use: ["ts-loader"],
       },
       {
-        test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader", "css-modules-typescript-loader"],
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader","sass-loader", "css-modules-typescript-loader"],
       },
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
