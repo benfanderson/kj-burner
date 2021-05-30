@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+
+
 module.exports = {
   entry: "./src/index.tsx",
   output: { path: path.join(__dirname, "build"), filename: "index.bundle.js" },
@@ -11,6 +13,20 @@ module.exports = {
   devServer: { contentBase: path.join(__dirname, "src") },
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        enforce: 'pre',
+        use: [
+          {
+            options: {
+              eslintPath: require.resolve('eslint'),
+    
+            },
+            loader: require.resolve('eslint-loader'),
+          },
+        ],
+        exclude: /node_modules/,
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import fastfood from "./fastfood.json"
 import './styles.scss';
 
-const App: React.FC<{}> = () => {
+const App: React.FC<unknown> = () => {
   const [weight, setWeight] = useState<string>('');
   const [kjConsumed, setkjConsumed] = useState<string>('');
   const [walkTime, setWalkTime] = useState<string>('');
