@@ -27,7 +27,6 @@ const App: React.FC<unknown> = () => {
     return n.toTimeString().slice(0, 5);
   }
   
-
   return (
     <div className="container">
     <h1 id="title">Kj Burn Calculator</h1>
