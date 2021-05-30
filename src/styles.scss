@@ -1,40 +1,71 @@
 $font-stack:    Helvetica, sans-serif;
-$box-shadow: rgb(132, 186, 236);
-$mobile-margin-bottom: 0.5em;
+$blue: rgb(39, 138, 231);
+$blue-hover: rgb(81, 164, 241);
 
-body {
-    font-family: $font-stack
+$input--margin-mobile: 1em;
+$form--margin-mobile:0.5em;
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: $font-stack;
 }
 
 .container{
-    width:100%
+    width:95%;
+    margin: auto;
+}
+
+#title{
+    margin-bottom: 0.5em;
 }
 
 form{
-    width:92w;
-    padding: 1em;
+    padding: 0.5em;
     border: solid 1px rgb(204, 202, 202);
     border-radius: 10px;
+    margin: 1em 0;
 }
 
-.label {
-    margin-bottom: $mobile-margin-bottom;
+.form--label {
+    margin-bottom: $form--margin-mobile;
     display:inline-block;
+    font-size: 1.25em;
 }
 
-.user_input{
-    margin-bottom: $mobile-margin-bottom;
-    width: 86vw;
+.form--input{
+    margin-bottom: $input--margin-mobile;
+    width: 98%;
 }
 
-input:focus {
-    -webkit-box-shadow: 0 0 10px $box-shadow;
-        box-shadow: 0 0 10px $box-shadow;
+.form--input:focus {
+    -webkit-box-shadow: 0 0 10px $blue;
+        box-shadow: 0 0 10px $blue;
 }
 
 button{
-    width: 86vw;
-   background-color:rgb(132, 186, 236);
-   border:0
+    width: 98%;
+   background-color: $blue;
+   border: 0;
+   font-size: 1.1em;
+   color: white;
+   padding: 0.3em;
+   border-radius: 7px;
 
+}
+
+button:hover{
+    background-color: $blue-hover ;
+}
+
+@media (min-width: 479px) {
+    .container{
+        width:60%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .container{
+        width:40%;
+    }
 }

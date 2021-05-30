@@ -16,7 +16,7 @@ const App: React.FC<{}> = () => {
     const weightInt = parseInt(weight)
     const kjInt = parseInt(kjConsumed);
     const kjBurned = kjInt/(weightInt*kjBurnedPerkj)
-    setWalkTime(time_convert(kjBurned))
+    setWalkTime(`It would take you ${time_convert(kjBurned)} to burn off ${kjConsumed} kilojoules`)
     event.preventDefault();
   };
 
@@ -30,25 +30,25 @@ const App: React.FC<{}> = () => {
 
   return (
     <div className="container">
-    <h1>Kj Burn Calculator</h1>
-    <p>Input your weight, walking speed and how mant kilojoules you consumed to find out how long it would take to burn them off.</p>
+    <h1 id="title">Kj Burn Calculator</h1>
+    <p>Input your weight, walking speed and how many kilojoules you consumed to find out how long it would take to burn them off.</p>
       <form>
-        <label className="label"><b>Weight</b></label> 
+        <label className="form--label"><b>Weight (kg)</b></label> 
         <br/>
-        <input type="number" name="fweight" className="user_input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
+        <input type="number" name="fweight" className="form--input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
         <br/>
-        <label className="label"><b>Walking speed</b></label> 
+        <label className="form--label"><b>Walking speed</b></label> 
         <br/>
-          <select className="user_input" name="speed" id="speed" value={kjBurnedPerkj}
+          <select className="form--input" name="speed" id="speed" value={kjBurnedPerkj}
             onChange={(event) => {setkjBurnedPerkj(event.target.value as unknown as number)}}>
               <option value="11.06" >Slow - 3km/h</option>
               <option value="14.74" >Moderate - 5km/h</option>
               <option value="18.44">Brisk - 6km/h</option>
           </select>
         <br/>
-        <label className="label"><b>How many kilojoules did you consume?</b></label>
+        <label className="form--label"><b>How many kjs did you consume?</b></label>
         <br/>
-          <input id="kj_consumed" list="kilojoules-list" required className="user_input" 
+          <input id="kj_consumed" list="kilojoules-list" required className="form--input" 
           value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}} />
           <datalist id="kilojoules-list">
             {fastFood.map((element, index) => <option  value={element.value} key={index}>{element.name}</option> )}
@@ -58,7 +58,7 @@ const App: React.FC<{}> = () => {
           Calculate walking time
         </button>
       </form>
-      <p>{walkTime}</p>
+      <p id="output">{walkTime}</p>
     </div>
   );
 }
