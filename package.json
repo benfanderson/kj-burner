@@ -1,15 +1,18 @@
 {
-  "name": "react-with-webpack-typescript",
+  "name": "kilojoule-burner",
   "version": "1.0.0",
-  "description": "",
+  "description": "Using React and Typescript to calculate how long you need to walk to burn off kilojoules from popular fast foods",
   "main": "index.tsx",
   "scripts": {
-    "webpack": "webpack",
+    "build": "webpack",
     "start": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [ "NPM",
+    "Javascript",
+    "Typescript",
+    "React"],
+  "author": "Ben Anderson",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.13.8",
