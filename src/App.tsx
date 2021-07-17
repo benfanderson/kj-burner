@@ -4,7 +4,7 @@ import './styles.scss';
 const App: React.FC<unknown> = () => {
   const [weight, setWeight] = useState<string>('');
   const [kjConsumed, setkjConsumed] = useState<string>('');
-  const [walkTime, setWalkTime] = useState<string>('');
+  const [walkDistance, setWalkDistance] = useState<string>('');
   const [kjBurnedPerkg, setkjBurnedPerkg] = useState<number>(11.06);
 
   const handleClick = (event: { preventDefault: () => void; }) => {
@@ -13,8 +13,10 @@ const App: React.FC<unknown> = () => {
     }
     const weightInt = parseInt(weight)
     const kjInt = parseInt(kjConsumed);
+    console.log(`kj consumed ${kjInt}`)
     const kjBurned = kjInt/(weightInt*kjBurnedPerkg)
-    setWalkTime(`It would take you ${time_convert(kjBurned, kjBurnedPerkg)} to burn off ${kjConsumed} kilojoules`)
+    console.log(`kj burned ${kjBurned}`)
+    setWalkDistance(`You would have to walk ${calculateDistance(kjBurned, kjBurnedPerkg)}km to burn off ${kjConsumed} kilojoules`)
     event.preventDefault();
   };
 
@@ -25,7 +27,7 @@ const App: React.FC<unknown> = () => {
   //   return n.toTimeString().slice(0, 5);
   // }
 
-  const time_convert = (kjBurned: number, kjBurnedPerkg: number ) => { 
+  const calculateDistance = (kjBurned: number, kjBurnedPerkg: number ) => { 
     let distance;
     if (kjBurnedPerkg === 11.06) {
       distance = kjBurned*3
@@ -34,18 +36,13 @@ const App: React.FC<unknown> = () => {
     } else {
       distance = kjBurned*6
     }
-    // const decimalTimeString = num;
-    // const n = new Date(0,0);
-    // n.setHours(+decimalTimeString * 60);
-    // // return n.toTimeString().slice(0, 5);
-    // console.log(kjBurnedPerkg)
-    return distance
+    return distance.toFixed(2);
   }
   
   return (
     <div className="container">
     <h1 id="title">Kj Burn Calculator</h1>
-    <p>Input your weight, walking speed and how many kilojoules you consumed to find out how long it would take to burn them off.</p>
+    <p>Input your weight, walking speed and how many kilojoules you consumed to find out how far you would have walk to burn them off.</p>
       <form>
         <label className="form--label"><b>Weight (kg)</b></label> 
         <br/>
@@ -68,7 +65,7 @@ const App: React.FC<unknown> = () => {
           Calculate walking time
         </button>
       </form>
-      <p id="output">{walkTime}</p>
+      <p id="output">{walkDistance}</p>
     </div>
   );
 }
