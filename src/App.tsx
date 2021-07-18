@@ -2,31 +2,28 @@ import React, { useState } from "react";
 import './styles.scss';
 
 const App: React.FC<unknown> = () => {
-  const [weight, setWeight] = useState<number>(0);
-  const [kjConsumed, setkjConsumed] = useState<number>(0);
+  const [weight, setWeight] = useState<string>('');
+  const [kjConsumed, setkjConsumed] = useState<string>('');
   const [walkDistance, setWalkDistance] = useState<string>('');
   const [kjBurnedPerkg, setkjBurnedPerkg] = useState<string>('11.06');
 
   const handleClick = (event: { preventDefault: () => void; }) => {
-    if(kjConsumed === 0 || weight === 0) {
+    if(kjConsumed.length === 0 || weight.length === 0) {
       return false
     }
-    // const weightInt = parseInt(weight);
-    // const weightInt = weight
-    // const kjInt = parseInt(kjConsumed);
+    const weightInt = parseInt(weight);
+    const kjInt = parseInt(kjConsumed);
     const perKgInt = parseInt(kjBurnedPerkg);
-    console.log(`kj consumed ${kjConsumed}`)
-    const kjBurned = kjConsumed/(weight*perKgInt)
-    console.log(`kj burnedPerKg ${kjBurnedPerkg}`)
+    const kjBurned = kjInt/(weightInt*perKgInt);
     setWalkDistance(`You would have to walk ${calculateDistance(kjBurned, perKgInt)}km to burn off ${kjConsumed} kilojoules`)
     event.preventDefault();
   };
 
-  const calculateDistance = (kjBurned: number, weight: number ) => { 
+  const calculateDistance = (kjBurned: number, perKgInt: number ) => { 
     let distance;
-    if (weight === 11.06) {
+    if (perKgInt === 11.06) {
       distance = kjBurned*3
-    } else if (weight === 14.74) {
+    } else if (perKgInt === 14.74) {
       distance = kjBurned*5
     } else {
       distance = kjBurned*6
@@ -41,7 +38,7 @@ const App: React.FC<unknown> = () => {
       <form>
         <label className="form--label"><b>Weight (kg)</b></label> 
         <br/>
-        <input type="number" name="fweight" className="form--input" id="weight" required value={weight} onChange={(event) => {setWeight(parseInt(event.target.value))}}  />
+        <input type="number" name="fweight" className="form--input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
         <br/>
         <label className="form--label"><b>Walking speed</b></label> 
         <br/>
@@ -54,7 +51,7 @@ const App: React.FC<unknown> = () => {
         <br/>
         <label className="form--label"><b>How many kjs did you consume?</b></label>
         <br/>
-        <input type="number" name="fkjs" className="form--input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(parseInt(event.target.value))}}  />
+        <input type="number" name="fkjs" className="form--input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}}  />
         <br/>
         <button onClick={handleClick}>
           Calculate walking time
