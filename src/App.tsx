@@ -5,33 +5,27 @@ const App: React.FC<unknown> = () => {
   const [weight, setWeight] = useState<string>('');
   const [kjConsumed, setkjConsumed] = useState<string>('');
   const [walkDistance, setWalkDistance] = useState<string>('');
-  const [kjBurnedPerkg, setkjBurnedPerkg] = useState<number>(11.06);
+  const [kjBurnedPerkg, setkjBurnedPerkg] = useState<string>('11.06');
 
   const handleClick = (event: { preventDefault: () => void; }) => {
     if(kjConsumed.length === 0 || weight.length === 0) {
       return false
     }
-    const weightInt = parseInt(weight)
+    const weightInt = parseInt(weight);
     const kjInt = parseInt(kjConsumed);
+    const perKgInt = parseInt(kjBurnedPerkg);
     console.log(`kj consumed ${kjInt}`)
-    const kjBurned = kjInt/(weightInt*kjBurnedPerkg)
-    console.log(`kj burned ${kjBurned}`)
-    setWalkDistance(`You would have to walk ${calculateDistance(kjBurned, kjBurnedPerkg)}km to burn off ${kjConsumed} kilojoules`)
+    const kjBurned = kjInt/(weightInt*perKgInt)
+    console.log(`kj burnedPerKg ${kjBurnedPerkg}`)
+    setWalkDistance(`You would have to walk ${calculateDistance(kjBurned, perKgInt)}km to burn off ${kjConsumed} kilojoules`)
     event.preventDefault();
   };
 
-  // const time_convert = (num: number) => { 
-  //   const decimalTimeString = num;
-  //   const n = new Date(0,0);
-  //   n.setMinutes(+decimalTimeString * 60);
-  //   return n.toTimeString().slice(0, 5);
-  // }
-
-  const calculateDistance = (kjBurned: number, kjBurnedPerkg: number ) => { 
+  const calculateDistance = (kjBurned: number, perKgInt: number ) => { 
     let distance;
-    if (kjBurnedPerkg === 11.06) {
+    if (perKgInt === 11.06) {
       distance = kjBurned*3
-    } else if (kjBurnedPerkg === 14.74) {
+    } else if (perKgInt === 14.74) {
       distance = kjBurned*5
     } else {
       distance = kjBurned*6
@@ -51,7 +45,7 @@ const App: React.FC<unknown> = () => {
         <label className="form--label"><b>Walking speed</b></label> 
         <br/>
           <select className="form--input" name="speed" id="speed" value={kjBurnedPerkg}
-            onChange={(event) => {setkjBurnedPerkg(event.target.value as unknown as number)}}>
+            onChange={(event) => {setkjBurnedPerkg(event.target.value as unknown as string)}}>
               <option value="11.06" >Slow - 3km/h</option>
               <option value="14.74" >Moderate - 5km/h</option>
               <option value="18.44">Brisk - 6km/h</option>
