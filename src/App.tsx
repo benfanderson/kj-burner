@@ -34,7 +34,7 @@ const App: React.FC<unknown> = () => {
   return (
     <div className="container">
     <h1 id="title">Kj Burn Calculator</h1>
-    <p>Input your weight, walking speed and how many kilojoules you consumed to find out how far you would have walk to burn them off.</p>
+    <p>Calculate how far you need to walk to burn off the kilojoules you consumed.</p>
       <form>
         <label className="form--label"><b>Weight (kg)</b></label> 
         <br/>
@@ -53,11 +53,12 @@ const App: React.FC<unknown> = () => {
         <br/>
         <input type="number" name="fkjs" className="form--input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}}  />
         <br/>
-        <button onClick={handleClick}>
-          Calculate walking time
+        <button className="form--button" onClick={handleClick}>
+          Calculate walking distance
         </button>
+        <p id="output">{walkDistance}</p>
       </form>
-      <p id="output">{walkDistance}</p>
+      
     </div>
   );
 }

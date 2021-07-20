@@ -1,6 +1,6 @@
-$font-stack:    Helvetica, sans-serif;
-$blue: rgb(39, 138, 231);
-$blue-hover: rgb(81, 164, 241);
+$font-stack:    'Roboto Condensed', sans-serif;
+$dark-orange: rgb(231, 125, 39);
+$light-orange:rgb(211, 161, 119);
 
 $input--margin-mobile: 1em;
 $form--margin-mobile:0.5em;
@@ -14,6 +14,7 @@ $form--margin-mobile:0.5em;
 .container{
     width:95%;
     margin: auto;
+    padding-top: 0.5em;
 }
 
 #title{
@@ -22,9 +23,10 @@ $form--margin-mobile:0.5em;
 
 form{
     padding: 0.5em;
-    border: solid 1px rgb(204, 202, 202);
+    background-color: #f2f3f3;
     border-radius: 10px;
     margin: 1em 0;
+    box-shadow: 5px 10px 18px #b1aeae;
 }
 
 .form--label {
@@ -34,28 +36,32 @@ form{
 }
 
 .form--input{
+    outline: 0;
+    border-width: 0 0 1.5px;
+    background-color: #f2f3f3;
     margin-bottom: $input--margin-mobile;
     width: 98%;
 }
 
 .form--input:focus {
-    -webkit-box-shadow: 0 0 10px $blue;
-        box-shadow: 0 0 10px $blue;
+    -webkit-box-shadow: 0 0 10px $dark-orange;
+    box-shadow: 0 0 10px $dark-orange;
 }
 
-button{
+.form--button{
     width: 98%;
-   background-color: $blue;
+   background: linear-gradient(to bottom, $light-orange 5%, $dark-orange 100%);
    border: 0;
    font-size: 1.1em;
    color: white;
    padding: 0.3em;
    border-radius: 7px;
+   margin-bottom: $input--margin-mobile;
 
 }
 
-button:hover{
-    background-color: $blue-hover ;
+.form--button:hover{
+    background: linear-gradient(to bottom, $dark-orange 5%, $light-orange 100%);
 }
 
 @media (min-width: 479px) {
