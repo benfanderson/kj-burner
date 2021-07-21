@@ -36,11 +36,11 @@ const App: React.FC<unknown> = () => {
     <h1 id="title">Kj Burn Calculator</h1>
     <p>Calculate how far you need to walk to burn off the kilojoules you consumed.</p>
       <form>
-        <label className="form--label"><b>Weight (kg)</b></label> 
+        <label htmlFor="weight" className="form--label"><b>Weight (kg)</b></label> 
         <br/>
         <input type="number" name="fweight" className="form--input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
         <br/>
-        <label className="form--label"><b>Walking speed</b></label> 
+        <label htmlFor="speed"  className="form--label"><b>Walking speed</b></label> 
         <br/>
           <select className="form--input" name="speed" id="speed" value={kjBurnedPerkg}
             onChange={(event) => {setkjBurnedPerkg(event.target.value as unknown as string)}}>
@@ -49,7 +49,7 @@ const App: React.FC<unknown> = () => {
               <option value="18.44">Brisk - 6km/h</option>
           </select>
         <br/>
-        <label className="form--label"><b>How many kjs did you consume?</b></label>
+        <label htmlFor="kj_consumed" className="form--label"><b>How many kjs did you consume?</b></label>
         <br/>
         <input type="number" name="fkjs" className="form--input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}}  />
         <br/>
