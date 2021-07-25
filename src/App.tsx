@@ -36,23 +36,25 @@ const App: React.FC<unknown> = () => {
     <h1 id="title">Kj Burn Calculator</h1>
     <p>Calculate how far you need to walk to burn off the kilojoules you consumed.</p>
       <form>
-        <label htmlFor="weight" className="form--label"><b>Weight (kg)</b></label> 
-        <br/>
-        <input type="number" name="fweight" className="form--input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
-        <br/>
+        <div className="form--float-label">
+          <input type="number" placeholder="Weight (kg)"name="weight" className="form--input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
+          <label htmlFor="weight" className="form--label"><b>Weight (kg)</b></label> 
+        </div>
+        {/* <br/> */}
         <label htmlFor="speed"  className="form--label"><b>Walking speed</b></label> 
-        <br/>
-          <select className="form--input" name="speed" id="speed" value={kjBurnedPerkg}
+        {/* <br/> */}
+          <select placeholder="How many kjs did you consume?" className="form--input" name="speed" id="speed" value={kjBurnedPerkg}
             onChange={(event) => {setkjBurnedPerkg(event.target.value as unknown as string)}}>
               <option value="11.06" >Slow - 3km/h</option>
               <option value="14.74" >Moderate - 5km/h</option>
               <option value="18.44">Brisk - 6km/h</option>
           </select>
-        <br/>
+        {/* <br/> */}
+        <div className="form--float-label">
+        <input type="number"  placeholder="How many kjs did you consume?" name="kj_consumed" className="form--input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}}  />
         <label htmlFor="kj_consumed" className="form--label"><b>How many kjs did you consume?</b></label>
-        <br/>
-        <input type="number" name="fkjs" className="form--input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}}  />
-        <br/>
+        </div>
+        {/* <br/> */}
         <button className="form--button" onClick={handleClick}>
           Calculate walking distance
         </button>
