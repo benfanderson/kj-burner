@@ -29,48 +29,53 @@ form{
     box-shadow: 5px 10px 18px #b1aeae;
 }
 
-.form--float-label {
-    position:  relative; 
-// margin-bottom:  10px; 
-label {
-  position:  absolute; 
-  top: calc(50% - 7px);
-  left:  0; 
-  opacity:  0; 
-  transition:  all .3s ease; 
-}
-// input:not(:placeholder-shown) {
-//   padding:  28px 0px 12px 0px; 
-// }
-input:not(:placeholder-shown) + label {
-  transform:  translateY(-30px); 
-  opacity:  .7; 
-}
-}
 
-.form--label {
-    margin-bottom: $form--margin-mobile;
-    // display:inline-block;
-    font-size: 0.75em;
-    opacity: 0.8;
-}
-
-.form--input{
-    outline: 0;
-    border-width: 0 0 1.5px;
-    background-color: #ededed;
-    margin-bottom: $input--margin-mobile;
-    width: 98%;
-    // padding: 20px 0;
-    height: 5vh;
-    transition: all .3s linear;
-    font-size: 1em;
-}
-
-.form--input:focus {
-    -webkit-border-color: $dark-orange;
-    border-color: $dark-orange;
-}
+.float-form {
+    position:relative; 
+    margin-bottom:20px; 
+  }
+  
+  .floating-input , .floating-select {
+    font-size:14px;
+    padding:4px 4px;
+    display:block;
+    width:100%;
+    height:30px;
+    background-color: transparent;
+    border:none;
+    border-bottom:1px solid #757575;
+  }
+  
+  .floating-input:focus , .floating-select:focus {
+       outline:none;
+       border-bottom:2px solid $dark-orange;
+  }
+  
+  label {
+    color:#999;
+    font-size:14px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:5px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  
+  .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+    top:-18px;
+    font-size:14px;
+    color:$dark-orange;
+  }
+  
+  .floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
+    top:-18px;
+    font-size:14px;
+    color:$dark-orange;
+  }
+  
 
 .form--button{
     width: 98%;
