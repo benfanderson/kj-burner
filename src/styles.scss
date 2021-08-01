@@ -1,6 +1,7 @@
 $font-stack:    'Roboto Condensed', sans-serif;
-$dark-orange: #E67519;
+$dark-orange: #c77532;
 $light-orange:#C58749;
+$background-grey: #ededed;
 
 $input--margin-mobile: 1em;
 $form--margin-mobile:0.5em;
@@ -23,29 +24,51 @@ $form--margin-mobile:0.5em;
 
 form{
     padding: 0.5em;
-    background-color: #ededed;
+    background-color: $background-grey;
     border-radius: 10px;
     margin: 1em 0;
     box-shadow: 5px 10px 18px #b1aeae;
 }
 
+.form--infield {
+  position: relative;
+  // width: 98%;
+}
+
+
 .form--label {
     margin-bottom: $form--margin-mobile;
     display:inline-block;
-    font-size: 1.25em;
+    font-size: 95%;
+    color: lighten($dark-orange, 15);
+    letter-spacing: 0.03em;
+	text-transform: uppercase;
+    position: absolute;
+	top: 2vh;
+	left: 0;
 }
 
 .form--input{
     outline: 0;
+    width:99%;
     border-width: 0 0 1.5px;
-    background-color: #ededed;
-    margin-bottom: $input--margin-mobile;
-    width: 98%;
+    background-color: $background-grey;
+    margin: 9px 0 $input--margin-mobile 0;
+    padding: 2em 0 10px 0;
 }
 
-.form--input:focus {
-    -webkit-box-shadow: 0 0 10px $dark-orange;
-    box-shadow: 0 0 10px $dark-orange;
+.form--select{
+    outline: 0;
+    width:99%;
+    border-width: 0 0 1.5px;
+    background-color: $background-grey;
+    margin: 9px 0 $input--margin-mobile 0;
+    padding: 2em 10px 10px 0;
+}
+
+.form--input:focus, .form--select:focus {
+    -webkit-border-bottom: solid 2px $dark-orange;
+    border-bottom: solid 2px $dark-orange;
 }
 
 .form--button{
