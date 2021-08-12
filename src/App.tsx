@@ -36,28 +36,25 @@ const App: React.FC<unknown> = () => {
     <h1 id="title">Kj Burn Calculator</h1>
     <p>Calculate how far you need to walk to burn off the kilojoules you consumed.</p>
       <form>
-        <div className="float-form">
-          <input type="number" placeholder=" "name="weight" id="weight" className="floating-input" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
-          <label htmlFor="weight" className="form--label" ><b>Weight (kg)</b></label> 
-        </div>
-      
-        <div className="float-form">
-          <select className="floating-select" name="speed" id="speed" value={kjBurnedPerkg}
+        <div className="form--infield">
+        <input type="number" name="fweight" className="form--input" id="weight" required value={weight} onChange={(event) => {setWeight(event.target.value)}}  />
+<label htmlFor="weight" className="form--label"><b>Weight (kg)</b></label> 
+      </div>
+       <div className="form--infield">
+          <select required className="form--input" name="speed" id="speed" value={kjBurnedPerkg}
             onChange={(event) => {setkjBurnedPerkg(event.target.value as unknown as string)}}>
-              <option value=""></option>
-<option value="" ></option>
+              <option value="" ></option>
               <option value="11.06" >Slow - 3km/h</option>
               <option value="14.74" >Moderate - 5km/h</option>
               <option value="18.44">Brisk - 6km/h</option>
           </select>
 <label htmlFor="speed"  className="form--label"><b>Walking speed</b></label> 
+      </div>
+        <div className="form--infield">
+           <input type="number" name="kj_consumed" className="form--input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}}  />
+            <label htmlFor="kj_consumed" className="form--label"><b>How many kjs did you consume?</b></label>
         </div>
-        {/* <br/> */}
-        <div className="float-form">
-        <input type="number"  placeholder=" " name="kj_consumed" className="floating-input" id="kj_consumed" required value={kjConsumed} onChange={(event) => {setkjConsumed(event.target.value)}}  />
-        <label htmlFor="kj_consumed" ><b>How many kjs did you consume?</b></label>
-        </div>
-        {/* <br/> */}
+        <br/>
         <button className="form--button" onClick={handleClick}>
           Calculate walking distance
         </button>
