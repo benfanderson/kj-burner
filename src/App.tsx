@@ -32,7 +32,7 @@ const App: React.FC<unknown> = () => {
   }
   
   return (
-    <div className="container">
+    <main className="container">
     <h1 id="title">Kj Burn Calculator</h1>
     <p>Calculate how far you need to walk to burn off the kilojoules you consumed.</p>
       <form>
@@ -61,7 +61,7 @@ const App: React.FC<unknown> = () => {
         <p id="output">{walkDistance}</p>
       </form>
       
-    </div>
+    </main>
   );
 }
 
